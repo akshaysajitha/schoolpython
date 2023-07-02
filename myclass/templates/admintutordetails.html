@@ -1,0 +1,250 @@
+
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>akshay</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %} " rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href=" {% static 'css/bootstrap.min.css' %} " rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href=" {% static 'css/style.css' %} " rel="stylesheet">
+    <link href=" {% static 'css/admintutordet.css' %} " rel="stylesheet">
+    <script>
+        function validate(){
+            var a= document.getElementById('gname').value;
+            var b= document.getElementById('cname').value;
+            if(a==""){
+                document.getElementById('errormsg').innerHTML="username not enter";
+                gname.focus();
+                return False;
+            }
+            if(b==""){
+                document.getElementById('errorpass').innerHTML="password not enter";
+                cname.focus("enter password");
+                return False;
+            }return True;
+        }
+        function deletetutor(a){
+            document.getElementById('deletevalue').value=a;
+            document.getElementById('admintutordelete').submit();
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+            <a href="home" class="navbar-brand">
+                <h1 class="m-0 text-primary"><i class="fa fa-book-reader me-3"></i>Inspire Academy</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav mx-auto">
+                    <a href="adminhome" class="nav-item nav-link">Admin Home</a>
+                    <a href="admintutorrequest" class="nav-item nav-link">Tutor Request</a>
+                    <a href="admintutordetails" class="nav-item nav-link active">Tutor Detials</a>
+                    <a href="adminviewparents" class="nav-item nav-link">view parents</a>
+                    <div class="nav-item dropdown">   
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Action</a>
+                        <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
+                            <a href="adminbookmanage" class="dropdown-item">Manage Book</a>
+                            <a href="adminvideomanage" class="dropdown-item">manage video</a>
+                            <a href="adminmarklistview" class="dropdown-item">markslist</a>
+                            <a href="adminratingview" class="dropdown-item">view feedback</a>
+                            
+                        </div>   
+                    </div>
+                    <a href="adminlogin" class="nav-item nav-link ">log out</a>
+                </div>
+                <p  class=" btn-primary rounded-pill px-3 d-none d-lg-block"> Admin<!--<i class="fa fa-arrow-right ms-3"></i>--></p>
+            </div>
+        </nav>
+        <!-- Navbar End -->
+
+
+       
+
+
+        <!-- Facilities Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <h1 class="mb-3">Admin tutor detials</h1>
+                    
+                </div>
+                
+            </div>
+        </div>
+        <!-- Facilities End -->
+        <form action="admintutordelete" id="admintutordelete" name="admintutordelete">
+            <input type="hidden" id='deletevalue' name='deletevalue'>
+        
+         {% for x in approvetutor  %}
+
+        <div class="page-content page-container" id="page-content">
+            <div class="padding">
+                <div class="row container d-flex justify-content-center">
+        <div class="col-xl-6 col-md-12">
+                                                        <div class="card user-card-full">
+                                                            <div class="row m-l-0 m-r-0">
+                                                                <div class="col-sm-4 bg-c-lite-green user-profile">
+                                                                    <div class="card-block text-center text-white">
+                                                                        <div class="m-b-25">
+                                                                            <img src="{% static 'tutorprofile/' %}{{x.14}}" class="img-radius" alt="User-Profile-Image">
+                                                                        </div>
+                                                                        <h6 class="f-w-600"> {{x.1}}</h6>
+                                                                        <p></p>
+                                                                        <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-8">
+                                                                    <div class="card-block">
+                                                                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600">class:{{x.8}}</h6>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <p class="m-b-10 f-w-600">Email</p>
+                                                                                <h6 class="text-muted f-w-400">{{x.5}}</h6>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <p class="m-b-10 f-w-600">Phone</p>
+                                                                                <h6 class="text-muted f-w-400">{{x.4}}</h6>
+                                                                            </div>
+                                                                        </div>
+                                                                        <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">   qualification :- {{x.3}}<br><br>experience</h6>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <p class="m-b-10 f-w-600">{{x.9}}</p>
+                                                                                <!--<h6 class="text-muted f-w-400">Sam Disuja</h6>-->
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <button class="bg-primary text-white rounded-pill py-2 px-3" onclick="deletetutor('{{x.0}}')">delete</button>
+                                                                                <!--<p class="m-b-10 f-w-600">Most Viewed</p>
+                                                                                <h6 class="text-muted f-w-400">Dinoter husainm</h6>-->
+                                                                            </div>
+                                                                        </div>
+                                                                        <ul class="social-link list-unstyled m-t-40 m-b-10">
+                                                                            <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
+                                                                            <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i class="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
+                                                                            <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i class="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                     </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                </form>
+                                                
+
+      
+       
+   <!-- Footer Start -->
+   <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Get In Touch</h3>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>palakkad kerala india</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+6865498767</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>ins@Academy.com</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+           
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">Photo Gallery</h3>
+                <div class="row g-2 pt-2">
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src=" {% static 'img/classes-1.jpg' %} " alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="{% static 'img/classes-2.jpg' %} " alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="{% static 'img/classes-3.jpg' %} " alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="{% static 'img/classes-4.jpg' %} " alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src=" {% static 'img/classes-5.jpg' %}" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="{% static 'img/classes-6.jpg' %} " alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h3 class="text-white mb-4">©copyrigts</h3>
+                <p>© 2023 Your Online School. All rights reserved</p>
+            </div>
+        </div>
+    </div>
+   
+</div>
+<!-- Footer End -->
+
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %} "></script>
+</body>
+
+</html>

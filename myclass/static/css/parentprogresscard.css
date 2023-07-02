@@ -1,0 +1,22 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .card {
+    flex: 0 0 30%; /* Adjust this value to control the width of each card */
+    margin-bottom: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .card {
+      flex: 0 0 45%; /* Adjust this value for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card {
+      flex: 0 0 100%; /* Adjust this value for mobile screens */
+    }
+  }
